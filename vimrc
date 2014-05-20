@@ -198,7 +198,7 @@ endfunction
 "}}}
 " {{{ Sass compile
 let g:sass_output_file = ""
-let g:sass_enabled = 1
+let g:sass_enabled = 0
 let g:sass_path_maps = {}
 command! Sass call SassCompile()
 autocmd BufWritePost *.scss call SassCompile()
@@ -247,8 +247,8 @@ endfunction
 "{{{ Function to use tabs instead of spaces
 command! Tabs call s:use_tabs()
 function! s:use_tabs()
-    let &tabstop=4
-    let &shiftwidth=4
+    let &tabstop=2
+    let &shiftwidth=2
     let &softtabstop=0
     set noexpandtab
 endfunction
@@ -322,10 +322,10 @@ endfunc
 "{{{ Toggle the arrow keys
 
 let g:arrow_keys_enabled = 1
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
+"noremap <Up> <nop>
+"noremap <Down> <nop>
+"noremap <Left> <nop>
+"noremap <Right> <nop>
 
 function! ArrowKeysToggle()
   if g:arrow_keys_enabled == 1
@@ -371,7 +371,7 @@ let g:NERDTreeMapHelp = "h"
 
 " Set font for GUI (e.g. GVim)
 if has("gui_running")
-    set guifont=Anonymous\ Pro\ 13
+    set guifont=Monaco:h14
 endif
 
 "{{{ Key Maps
@@ -441,15 +441,23 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-p>"
 " Vdebug options
 let g:vdebug_options = {"on_close":"detach"}
 
-let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_enable_balloons = 1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map = { 'mode': 'active',
-            \                   'active_filetypes' : [],
-            \                   'passive_filetypes' : ['php'] }
+
+let g:syntastic_mode_map = {'mode': 'passive'}
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_jump = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+
 
 let NERDTreeIgnore = ['\.pyc$','\.sock$']
 
 let g:vdebug_features = {'max_depth':3}
 let g:tork_pre_command = "rvm use default@global > /dev/null"
+let g:taggatron_enabled = 0
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
